@@ -4,18 +4,39 @@ import CharacterCard from './CharacterCard';
 
 const CharactersList = () => {
 
-    const { characters } = useCharacterContext();
+    const { characters, characterByStatus } = useCharacterContext();
 
     return (
         <div className='flex flex-wrap justify-center gap-[50px] mt-5 w-full py-5 overflow-hidden '>
-            {characters.map((characterIndex) => {
-                return (
-                    <Link key={characterIndex.id} to={`/character/${characterIndex.id}`}>
-                        <CharacterCard character={characterIndex} key={characterIndex.id} />
-                    </Link>
-                )
-            })}
-        </div>
+
+
+            {characterByStatus.length ?
+                <>
+                    {
+                        characterByStatus.map((characterIndex) => {
+                            return (
+                                <Link key={characterIndex.id} to={`/character/${characterIndex.id}`}>
+                                    <CharacterCard character={characterIndex} key={characterIndex.id} />
+                                </Link>
+                            )
+                        })
+                    }
+                </>
+                :
+                <>
+                    {
+                        characters.map((characterIndex) => {
+                            return (
+                                <Link key={characterIndex.id} to={`/character/${characterIndex.id}`}>
+                                    <CharacterCard character={characterIndex} key={characterIndex.id} />
+                                </Link>
+                            )
+                        })
+                    }
+                </>
+            }
+
+        </div >
     )
 }
 

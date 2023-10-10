@@ -53,20 +53,17 @@ const CharacterPage = () => {
 
       <div className='grid grid-flow-col mx-[3rem] text-white bg-[#3C3E44] py-2 my-8 border border-black'>
 
-        {loader && <Loading />}
-        <div className='grid place-content-center'>
-          <img className='w-[400px] border border-black' src={characterInfo.image} alt={`Personaje ${characterInfo.name}`} />
-        </div>
+            <div className='grid place-content-center'>
+              <img className='w-[400px] border border-black' src={characterInfo.image} alt={`Personaje ${characterInfo.name}`} />
+            </div>
 
-        <div className='col-span-4 space-y-5 '>
+            <div className='col-span-4 space-y-5 '>
 
-          <div className='flex flex-col'>
-            <h1 className='text-[30px] font-medium'>{characterInfo.name}</h1>
+              <div className='flex flex-col'>
+                <h1 className='text-[30px] font-medium'>{characterInfo.name}</h1>
 
-            <span className='flex items-center mt-2 p-0 font-semibold'>
-              <span
-                className={` h-[0.5rem] w-[0.5rem] mr-[0.375rem] rounded-[50%] border border-black/20
-                ${characterInfo.status === 'Alive'
+                <span className='flex items-center mt-2 p-0 font-semibold'>
+                  <span className={` h-[0.5rem] w-[0.5rem] mr-[0.375rem] rounded-[50%] border border-black/20 ${characterInfo.status === 'Alive'
                     ? 'bg-[#55CC44]'
                     :
                     characterInfo.status === 'Dead'
@@ -74,47 +71,47 @@ const CharacterPage = () => {
                       'bg-red-600'
                       :
                       'bg-gray-400'
-                  }
-          `}>
-              </span>
+                    }`}>
+                  </span>
 
-              {characterInfo.status} - {characterInfo.species}
-            </span>
-          </div>
+                  {characterInfo.status} - {characterInfo.species}
+                </span>
+              </div>
 
-          <div className='flex flex-col'>
+              <div className='flex flex-col'>
 
-            <span className='text-white/50 font-medium'>Last known location:</span>
-            {characterInfo.location ? (
-              <span className='text-white font-medium'>{characterInfo.location.name}</span>
-            ) : (
-              <span>No location information available</span>
-            )}
-          </div>
+                <span className='text-white/50 font-medium'>Last known location:</span>
+                {characterInfo.location ? (
+                  <span className='text-white font-medium'>{characterInfo.location.name}</span>
+                ) : (
+                  <span>No location information available</span>
+                )}
+              </div>
 
-          <div className='flex flex-col'>
+              <div className='flex flex-col'>
 
-            <span className='text-white/50 font-medium'>Specie:</span>
+                <span className='text-white/50 font-medium'>Specie:</span>
 
-            <span className='text-white font-medium'>{characterInfo.species}</span>
+                <span className='text-white font-medium'>{characterInfo.species}</span>
 
 
-          </div>
+              </div>
 
-          <div className='flex flex-col'>
+              <div className='flex flex-col'>
 
-            <span className='text-white/50 font-medium'>Origin:</span>
-            {characterInfo.origin ? (
-              <span className='text-white font-medium'>{characterInfo.origin.name}</span>
-            ) : (
-              <span>No origin information available</span>
-            )}
-          </div>
-        </div>
+                <span className='text-white/50 font-medium'>Origin:</span>
+                {characterInfo.origin ? (
+                  <span className='text-white font-medium'>{characterInfo.origin.name}</span>
+                ) : (
+                  <span>No origin information available</span>
+                )}
+              </div>
+            </div>
 
         <div>
 
         </div>
+
 
       </div>
 

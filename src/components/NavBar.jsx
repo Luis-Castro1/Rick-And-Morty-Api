@@ -8,7 +8,7 @@ const NavBar = () => {
 
   const logo = useParams();
 
-  const { onInputChange, valueSearch, onResetForm, loader } = useCharacterContext();
+  const { onInputChange, valueSearch, onResetForm, loader, getCharacterByStatus } = useCharacterContext();
   const navigate = useNavigate();
 
   const onSearchSubmit = e => {
@@ -32,17 +32,18 @@ const NavBar = () => {
           <div className="absolute left-[2rem] sm:left-[3rem] text-[20px]">
             <Link to='/'>
 
-              {Object.keys(logo).length === 0
+              <img className='w-[70%]' src={Object.keys(logo).length === 0
                 ?
-                <img className='w-[70%]' src="/src/assets/Logo.svg" alt="" />
+                "/src/assets/Logo.svg"
                 :
-                <img className='w-[70%]' src="/src/assets/LogoSecondary.svg" alt="" />}
+                "/src/assets/LogoSecondary.svg"} alt="" />
 
             </Link>
           </div>
-          <div className="relative w-1/2 text-[20px] ">
+          <div className="justify-center gap-x-10 relative w-[70%] text-[20px] flex">
 
             <form
+              className='w-[70%]'
               onSubmit={onSearchSubmit}>
               <input
                 name="valueSearch"
@@ -52,8 +53,17 @@ const NavBar = () => {
                 placeholder="Buscar Personaje"
                 className='w-full bg-white/10 border border-black  focus:outline-none rounded-sm pr-1 pl-8'
                 type="search" />
-              <FontAwesomeIcon className="absolute left-1 top-1" icon={faSearch} />
+              <FontAwesomeIcon className="absolute left-9 top-1" icon={faSearch} />
             </form>
+
+            <div className='w-[20%] flex justify-around'>
+              <label htmlFor="Dead">Alive</label>
+              <input onChange={getCharacterByStatus} type="checkbox" name="Alive" id="Alive" />
+
+              <label htmlFor="Dead">Dead</label>
+              <input onChange={getCharacterByStatus} type="checkbox" name="Dead" id="Dead" />
+            </div>
+
           </div>
         </div>
       </nav>

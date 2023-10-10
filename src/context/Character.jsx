@@ -49,13 +49,13 @@ export function Character({ children }) {
     const getAllCharacter = async () => {
 
         try {
-
             const allCharactersCopy = ([]);
 
             const baseUrl = 'https://rickandmortyapi.com/api/'
 
             for (let i = 1; i <= 42; i++) {
                 setLoader(true)
+
                 const response = await axios.get(`${baseUrl}character?page=${i}`)
 
                 const dataCharacters = response.data;
@@ -106,6 +106,34 @@ export function Character({ children }) {
         setPage(page + 1)
     }
 
+
+
+    const [statusSelected, setStatusSelected] = useState({
+        Alive: false,
+        Dead: false,
+    })
+
+    const [characterByStatus, setCharacterByStatus] = useState([])
+
+    const getCharacterByStatus = e => {
+        setStatusSelected({
+            ...statusSelected,
+            [e.target.name]: e.target.checked,
+        })
+
+        if (e.target.checked) {
+            const filteredResults = allCharacters.filter(character => character.status.includes(e.target.name))
+
+            setCharacterByStatus([...characterByStatus, ...filteredResults]);
+
+        } else {
+            const filteredResults = characterByStatus.filter(
+                character => !character.status.includes(e.target.name));
+            setCharacterByStatus([...filteredResults]);
+        }
+
+    }
+
     useEffect(() => {
         getCharacter();
     }, [page])
@@ -128,7 +156,9 @@ export function Character({ children }) {
                     valueSearch,
                     onInputChange,
                     onResetForm,
-                    getCharacter
+                    getCharacter,
+                    getCharacterByStatus,
+                    characterByStatus
                 }
             }
         >

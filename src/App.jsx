@@ -11,14 +11,18 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+
           <Route path='/' element={<Navigation />}>
+
             <Route index element={<Home />} />
             <Route path='search' element={<SearchPage />} />
             <Route path='character/:id' element={<CharacterPage />}>
               <Route path='*' element={<Navigate to='/' />} />
             </Route>
             <Route path='*' element={<Navigate to='/' />} />
+
           </Route>
+
         </Routes>
       </BrowserRouter>
     </>
